@@ -41,6 +41,7 @@ module.exports = {
       filename: "index.html",
       favicon: "./public/favicon.ico",
     }),
+    new Dotenv(),
   ],
   devServer: {
     static: path.join(__dirname, "dist"),
