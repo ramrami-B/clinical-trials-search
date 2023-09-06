@@ -1,5 +1,10 @@
-const PageLayout = () => {
-  return <div>PageLayout</div>;
+const PageLayout = ({ children }: any) => {
+  return (
+    <Layout>
+      <Header></Header>
+      {children}
+    </Layout>
+  );
 };
 
 export default PageLayout;
