@@ -1,11 +1,14 @@
-import { HashRouter } from 'react-router-dom';
-import AppRoutes from './routes';
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes";
+import PageLayout from "./layout/PageLayout";
 
 const App = () => {
   return (
-    <HashRouter>
-      <AppRoutes />
-    </HashRouter>
+    <BrowserRouter>
+      <PageLayout>
+        <AppRoutes />
+      </PageLayout>
+    </BrowserRouter>
   );
 };
 
