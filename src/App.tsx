@@ -1,10 +1,13 @@
-import { BrowserRouter } from 'react-router-dom';
-import AppRoutes from './routes';
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes";
+import PageLayout from "./layout/PageLayout";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <PageLayout>
+        <AppRoutes />
+      </PageLayout>
     </BrowserRouter>
   );
 };
