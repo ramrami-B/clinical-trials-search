@@ -3,6 +3,7 @@ import RelatedSearch from "./RelatedSearch";
 import Input from "./Input";
 import useFocus from "../hooks/useFocus";
 import { useEffect, useState } from "react";
+import { localCache } from "../utils/localCaching";
 
 const SearchBar = () => {
   const [isFocus, handlerFocus] = useFocus();
@@ -10,8 +11,14 @@ const SearchBar = () => {
   const [query, setQuery] = useState("");
 
   const handlerChange = async (target: string) => {
-    const data = await Axios.search(target);
     setQuery(target);
+    let data = localCache.get(target);
+
+    if (!data) {
+      data = await Axios.search(target);
+      localCache.set(target, data);
+    }
+
     setTerms(data);
   };
 
