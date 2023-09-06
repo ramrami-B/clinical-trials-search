@@ -1,12 +1,12 @@
 // routes.tsx
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
+import SearchPage from './pages/SearchPage';
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" Component={Home} />
+      <Route path="/" Component={SearchPage} />
     </Routes>
   );
 };
