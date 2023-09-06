@@ -1,9 +1,7 @@
-import { Axios } from "../api/axios";
 import RelatedSearch from "./RelatedSearch";
 import Input from "./Input";
 import useFocus from "../hooks/useFocus";
-import { useEffect, useState } from "react";
-import { localCache } from "../utils/localCaching";
+import { useState } from "react";
 
 const SearchBar = () => {
   const [isFocus, handlerFocus] = useFocus();
