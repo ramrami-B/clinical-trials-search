@@ -3,7 +3,7 @@ import axios from "axios";
 class AxiosClient {
   #baseURL;
 
-  constructor(baseURL: string) {
+  constructor(baseURL: string | undefined) {
     this.#baseURL = baseURL;
   }
 
@@ -17,6 +17,4 @@ class AxiosClient {
   }
 }
 
-export const Axios = new AxiosClient(
-  "https://preonboardingapiserver.vercel.app/api/data"
-);
+export const Axios = new AxiosClient(process.env.BASE_URL);
