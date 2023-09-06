@@ -4,15 +4,17 @@ import { colors } from "../constants/colors";
 
 interface InputProps {
   handlerFocus: () => void;
+  handlerChange: (target: string) => any;
 }
 
-const Input = ({ handlerFocus }: InputProps) => {
+const Input = ({ handlerFocus, handlerChange }: InputProps) => {
   return (
     <InputWrap>
       <StyledInput
         placeholder="질환명을 입력해 주세요"
         onFocus={() => handlerFocus()}
         onBlur={() => handlerFocus()}
+        onChange={(e) => handlerChange(e.target.value)}
       ></StyledInput>
       <IoSearchCircle color={colors.primary} size={80} />
     </InputWrap>

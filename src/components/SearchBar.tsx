@@ -1,21 +1,24 @@
-import { axiosClient } from "../api/axios";
+import { Axios } from "../api/axios";
 import RelatedSearch from "./RelatedSearch";
 import Input from "./Input";
 import useFocus from "../hooks/useFocus";
+import { useEffect, useState } from "react";
 
 const SearchBar = () => {
   const [isFocus, handlerFocus] = useFocus();
+  const [terms, setTerms] = useState([]);
+  const [query, setQuery] = useState("");
 
-  //TODO: 검색 입력 할 때 api 호출
-  const handlerChangeSearchTerms = (e: any) => {
-    console.log(e.target.value);
-    axiosClient.getTerms(e.target.value);
+  const handlerChange = async (target: string) => {
+    const data = await Axios.search(target);
+    setQuery(target);
+    setTerms(data);
   };
 
   return (
     <div>
-      <Input handlerFocus={handlerFocus} />
-      {isFocus && <RelatedSearch />}
+      <Input handlerFocus={handlerFocus} handlerChange={handlerChange} />
+      {isFocus && <RelatedSearch query={query} terms={terms} />}
     </div>
   );
 };

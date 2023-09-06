@@ -7,16 +7,16 @@ class AxiosClient {
     this.#baseURL = baseURL;
   }
 
-  async getTerms(term: string, options = {}) {
+  async search(query: string) {
     try {
-      const res = await axios.get(this.#baseURL + `data?q=${term}`);
-      console.log(res.data);
+      const res = await axios.get(this.#baseURL + `?q=${query}`);
+      return res.data;
     } catch (e) {
       console.log(e);
     }
   }
 }
 
-export const axiosClient = new AxiosClient(
-  "https://preonboardingapiserver.vercel.app/api/"
+export const Axios = new AxiosClient(
+  "https://preonboardingapiserver.vercel.app/api/data"
 );
