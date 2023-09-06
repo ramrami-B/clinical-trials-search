@@ -1,16 +1,37 @@
 import { styled } from "styled-components";
 import { colors } from "../constants/colors";
 import SearchItem from "./SearchItem";
+import { useEffect, useState } from "react";
+import { localCache } from "../utils/localCaching";
+import { Axios } from "../api/axios";
+
+type SearchTermsType = {
+  sickCd: string;
+  sickNm: string;
+};
 
 interface RelatedSearchProps {
   query: string;
-  terms: {
-    sickCd: "";
-    sickNm: "";
-  }[];
 }
 
-const RelatedSearch = ({ query, terms }: RelatedSearchProps) => {
+const RelatedSearch = ({ query }: RelatedSearchProps) => {
+  const [terms, setTerms] = useState<SearchTermsType[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      let data = localCache.get(query);
+
+      if (!data) {
+        data = await Axios.search(query);
+        localCache.set(query, data);
+      }
+
+      setTerms(data);
+    };
+
+    fetchData();
+  }, [query]);
+
   // TODO: localstorage에서 캐싱되어 있는 검색어들 불러오기
   return (
     <RelatedSearchWrap>
