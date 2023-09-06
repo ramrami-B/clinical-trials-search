@@ -19,11 +19,14 @@ export default SearchPage;
 const Container = styled.div`
   width: 50%;
   height: 100%;
-  margin: auto;
-  margin-top: 4.3rem;
+  margin: 4.3rem auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
+
+  & > h1 {
+    margin: 3rem 0;
+  }
 `;

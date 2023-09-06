@@ -23,7 +23,6 @@ const RelatedSearch = () => {
 export default RelatedSearch;
 
 const RelatedSearchWrap = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

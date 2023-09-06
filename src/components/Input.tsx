@@ -2,10 +2,18 @@ import { styled } from "styled-components";
 import { IoSearchCircle } from "react-icons/io5";
 import { colors } from "../constants/colors";
 
-const Input = () => {
+interface InputProps {
+  handlerFocus: () => void;
+}
+
+const Input = ({ handlerFocus }: InputProps) => {
   return (
     <InputWrap>
-      <StyledInput placeholder="질환명을 입력해 주세요"></StyledInput>
+      <StyledInput
+        placeholder="질환명을 입력해 주세요"
+        onFocus={() => handlerFocus()}
+        onBlur={() => handlerFocus()}
+      ></StyledInput>
       <IoSearchCircle color={colors.primary} size={80} />
     </InputWrap>
   );

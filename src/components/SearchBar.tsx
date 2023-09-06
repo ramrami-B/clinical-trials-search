@@ -1,10 +1,10 @@
 import { axiosClient } from "../api/axios";
-import { useState } from "react";
 import RelatedSearch from "./RelatedSearch";
 import Input from "./Input";
+import useFocus from "../hooks/useFocus";
 
 const SearchBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isFocus, handlerFocus] = useFocus();
 
   //TODO: 검색 입력 할 때 api 호출
   const handlerChangeSearchTerms = (e: any) => {
@@ -14,8 +14,8 @@ const SearchBar = () => {
 
   return (
     <div>
-      <Input />
-      {isOpen && <RelatedSearch />}
+      <Input handlerFocus={handlerFocus} />
+      {isFocus && <RelatedSearch />}
     </div>
   );
 };
