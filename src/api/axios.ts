@@ -10,6 +10,7 @@ class AxiosClient {
   async search(query: string) {
     try {
       const res = await axios.get(this.#baseURL + `?q=${query}`);
+      console.info("api");
       return res.data;
     } catch (e) {
       console.log(e);
