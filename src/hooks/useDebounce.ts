@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import { localCache } from "../utils/localCaching";
 import { Axios } from "../api/axios";
-
-type SearchTermsType = {
-  sickCd: string;
-  sickNm: string;
-};
+import { TermsType } from "../constants/@type/termsType";
 
 const useDebounce = (value: string, delay: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
-  const [data, setData] = useState<SearchTermsType[]>([]);
+  const [data, setData] = useState<TermsType[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,7 +21,7 @@ const useDebounce = (value: string, delay: number) => {
     const fetchData = async () => {
       let tempData = localCache.get(debounceValue);
 
-      if (!tempData) {
+      if (!tempData && debounceValue) {
         tempData = await Axios.search(debounceValue);
         localCache.set(debounceValue, tempData);
       }
@@ -34,7 +30,6 @@ const useDebounce = (value: string, delay: number) => {
     };
 
     fetchData();
-    
   }, [debounceValue]);
 
   return data;
