@@ -3,6 +3,7 @@ import Input from "./Input";
 import useFocus from "../hooks/useFocus";
 import { useState } from "react";
 import useDebounce from "../hooks/useDebounce";
+import processKeyboard from "../utils/processKeyboard";
 
 const SearchBar = () => {
   const [isFocus, handlerFocus] = useFocus();
@@ -15,24 +16,16 @@ const SearchBar = () => {
     setQuery(target);
   };
 
-  const handlerKeyPress = (target: string) => {
-    if (target === "ArrowDown") {
-      setFocusIdx(focusIdx + 1);
-    }
-    if (target === "ArrowUp") {
-      setFocusIdx(focusIdx - 1);
-    }
-    if (target === "Enter") {
-      setQuery(terms[focusIdx].sickNm);
-    }
+  const handlerPressKey = (target: string) => {
+    processKeyboard(target, focusIdx, setFocusIdx, setQuery, terms);
   };
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Input
         handlerFocus={handlerFocus}
         handlerChange={handlerChange}
-        handlerKeyPress={handlerKeyPress}
+        handlerPressKey={handlerPressKey}
         value={query}
       />
       {isFocus && (
