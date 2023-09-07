@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback } from "react";
+import { API_BASE_URL } from "../constants/url";
 
 class AxiosClient {
   #baseURL;
@@ -19,4 +19,4 @@ class AxiosClient {
   }
 }
 
-export const Axios = new AxiosClient(process.env.API_BASE_URL);
+export const Axios = new AxiosClient(API_BASE_URL);
