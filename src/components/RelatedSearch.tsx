@@ -2,22 +2,32 @@ import { styled } from "styled-components";
 import { colors } from "../constants/colors";
 import SearchItem from "./SearchItem";
 import useDebounce from "../hooks/useDebounce";
+import { useEffect, useState } from "react";
 
 interface RelatedSearchProps {
   query: string;
+  focusIdx: number;
+  terms: {
+    sickCd: string;
+    sickNm: string;
+  }[];
 }
 
-const RelatedSearch = ({ query }: RelatedSearchProps) => {
-  const terms = useDebounce(query, 500);
-
+const RelatedSearch = ({ query, focusIdx, terms }: RelatedSearchProps) => {
   // TODO: localstorage에서 캐싱되어 있는 검색어들 불러오기
   return (
     <RelatedSearchWrap>
-      {query && <SearchItem string={query} />}
+      {query && <SearchItem string={query} isFocusing={false} />}
       <p>추천 검색어</p>
       {terms &&
         terms.map((term, idx) => {
-          return <SearchItem string={term.sickNm} key={idx} />;
+          return (
+            <SearchItem
+              string={term.sickNm}
+              key={idx}
+              isFocusing={focusIdx === idx}
+            />
+          );
         })}
     </RelatedSearchWrap>
   );

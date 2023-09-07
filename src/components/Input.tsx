@@ -5,9 +5,16 @@ import { colors } from "../constants/colors";
 interface InputProps {
   handlerFocus: () => void;
   handlerChange: (target: string) => any;
+  handlerKeyPress: (target: string) => any;
+  value: string;
 }
 
-const Input = ({ handlerFocus, handlerChange }: InputProps) => {
+const Input = ({
+  handlerFocus,
+  handlerChange,
+  handlerKeyPress,
+  value,
+}: InputProps) => {
   return (
     <InputWrap>
       <StyledInput
@@ -15,6 +22,8 @@ const Input = ({ handlerFocus, handlerChange }: InputProps) => {
         onFocus={() => handlerFocus()}
         onBlur={() => handlerFocus()}
         onChange={(e) => handlerChange(e.target.value)}
+        onKeyDown={(e) => handlerKeyPress(e.key)}
+        value={value}
       ></StyledInput>
       <IoSearchCircle color={colors.primary} size={80} />
     </InputWrap>
