@@ -1,4 +1,4 @@
-import RelatedSearch from "./RelatedSearch";
+import RelatedSearches from "./RelatedSearches";
 import Input from "./Input";
 import useFocus from "../hooks/useFocus";
 import { useState } from "react";
@@ -36,7 +36,7 @@ const SearchBar = () => {
         value={query}
       />
       {isFocus && (
-        <RelatedSearch query={query} terms={terms} focusIdx={focusIdx} />
+        <RelatedSearches query={query} terms={terms} focusIdx={focusIdx} />
       )}
     </div>
   );

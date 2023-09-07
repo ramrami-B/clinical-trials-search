@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { localCache } from "../utils/localCaching";
+import { localCache } from "../utis/localCaching";
 import { Axios } from "../api/axios";
 import { TermsType } from "../constants/@type/termsType";
 

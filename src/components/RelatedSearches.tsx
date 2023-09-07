@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 import { colors } from "../constants/colors";
 import SearchItem from "./SearchItem";
-import useDebounce from "../hooks/useDebounce";
-import { useEffect, useState } from "react";
 
 interface RelatedSearchProps {
   query: string;
@@ -13,7 +11,7 @@ interface RelatedSearchProps {
   }[];
 }
 
-const RelatedSearch = ({ query, focusIdx, terms }: RelatedSearchProps) => {
+const RelatedSearches = ({ query, focusIdx, terms }: RelatedSearchProps) => {
   // TODO: localstorage에서 캐싱되어 있는 검색어들 불러오기
   return (
     <RelatedSearchWrap>
@@ -32,7 +30,7 @@ const RelatedSearch = ({ query, focusIdx, terms }: RelatedSearchProps) => {
     </RelatedSearchWrap>
   );
 };
-export default RelatedSearch;
+export default RelatedSearches;
 
 const RelatedSearchWrap = styled.div`
   display: flex;
