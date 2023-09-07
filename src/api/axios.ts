@@ -19,4 +19,4 @@ class AxiosClient {
   }
 }
 
-export const Axios = new AxiosClient(process.env.BASE_URL);
+export const Axios = new AxiosClient(process.env.API_BASE_URL);
