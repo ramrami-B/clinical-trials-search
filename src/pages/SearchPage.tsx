@@ -17,7 +17,7 @@ const SearchPage = () => {
 export default SearchPage;
 
 const Container = styled.div`
-  width: 50%;
+  width: 35rem;
   height: 100%;
   margin: 4.3rem auto;
   display: flex;
@@ -27,6 +27,6 @@ const Container = styled.div`
   text-align: center;
 
   & > h1 {
-    margin: 3rem 0;
+    margin: 2rem 0;
   }
 `;

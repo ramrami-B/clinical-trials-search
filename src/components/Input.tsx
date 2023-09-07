@@ -5,14 +5,14 @@ import { colors } from "../constants/colors";
 interface InputProps {
   handlerFocus: () => void;
   handlerChange: (target: string) => any;
-  handlerKeyPress: (target: string) => any;
+  handlerPressKey: (target: string) => any;
   value: string;
 }
 
 const Input = ({
   handlerFocus,
   handlerChange,
-  handlerKeyPress,
+  handlerPressKey,
   value,
 }: InputProps) => {
   return (
@@ -22,7 +22,7 @@ const Input = ({
         onFocus={() => handlerFocus()}
         onBlur={() => handlerFocus()}
         onChange={(e) => handlerChange(e.target.value)}
-        onKeyDown={(e) => handlerKeyPress(e.key)}
+        onKeyDown={(e) => handlerPressKey(e.key)}
         value={value}
       ></StyledInput>
       <IoSearchCircle color={colors.primary} size={80} />
@@ -36,7 +36,7 @@ const InputWrap = styled.label`
   display: flex;
   border-radius: 3.125rem;
   background: ${colors.white};
-  padding: 0 1.2rem;
+  padding: 0 1rem;
   margin: 0.6rem 0;
 
   &:focus-within {
@@ -47,9 +47,9 @@ const InputWrap = styled.label`
 const StyledInput = styled.input`
   width: 100%;
   border-radius: 3.125rem;
-  padding: 1.5rem 1.2rem 1.3rem 1.2rem;
+  padding: 1rem 0.5rem 0.8em 0.5rem;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
   &:focus {
     outline: none;
@@ -58,9 +58,9 @@ const StyledInput = styled.input`
 
   &::placeholder {
     background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-256.png);
-    background-size: 8%;
+    background-size: 6%;
     background-position: 0 center;
     background-repeat: no-repeat;
-    text-indent: 8%;
+    text-indent: 6%;
   }
 `;
