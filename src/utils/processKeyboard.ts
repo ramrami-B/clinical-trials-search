@@ -7,14 +7,14 @@ const processKeyboard = (
   setValue: any,
   terms: DataType[]
 ) => {
-  if (target === "ArrowDown") {
+  if (target && target === "ArrowDown") {
     setFocusIdx(focusIdx + 1);
   }
-  if (target === "ArrowUp") {
+  if (target && target === "ArrowUp") {
     setFocusIdx(focusIdx - 1);
   }
-  if (target === "Enter") {
-    setValue(terms[focusIdx].sickNm);
+  if (target && target === "Enter") {
+    focusIdx > 0 && terms && setValue(terms[focusIdx].sickNm);
   }
 };
 

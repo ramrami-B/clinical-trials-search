@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { colors } from "../../constants/colors";
 import SearchItem from "./SearchItem";
-import { ZERO } from "../../constants/number";
+import { MAX_TERMS_NUM, ZERO } from "../../constants/number";
 
 interface RelatedSearchProps {
   query: string;
@@ -21,15 +21,16 @@ const RelatedSearches = ({ query, focusIdx, terms }: RelatedSearchProps) => {
       ) : (
         <>
           <p>추천 검색어</p>
-          {terms.map((term, idx) => {
-            return (
-              <SearchItem
-                string={term.sickNm}
-                key={idx}
-                isFocusing={focusIdx === idx}
-              />
-            );
-          })}
+          {terms.map(
+            (term, idx) =>
+              idx < MAX_TERMS_NUM && (
+                <SearchItem
+                  string={term.sickNm}
+                  key={idx}
+                  isFocusing={focusIdx === idx}
+                />
+              )
+          )}
         </>
       )}
     </RelatedSearchWrap>
