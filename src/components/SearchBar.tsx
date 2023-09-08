@@ -10,14 +10,14 @@ const SearchBar = () => {
   const [focusIdx, setFocusIdx] = useState(-1);
   const [query, setQuery] = useState("");
 
-  const terms = useDebounce(query, 500);
+  const { dataList, isLoading } = useDebounce(query, 500);
 
   const handlerChange = (target: string) => {
     setQuery(target);
   };
 
   const handlerPressKey = (target: string) => {
-    processKeyboard(target, focusIdx, setFocusIdx, setQuery, terms);
+    processKeyboard(target, focusIdx, setFocusIdx, setQuery, dataList);
   };
 
   return (
@@ -29,7 +29,12 @@ const SearchBar = () => {
         value={query}
       />
       {isFocus && (
-        <RelatedSearches query={query} terms={terms} focusIdx={focusIdx} />
+        <RelatedSearches
+          query={query}
+          dataList={dataList}
+          focusIdx={focusIdx}
+          isLoading={isLoading}
+        />
       )}
     </div>
   );

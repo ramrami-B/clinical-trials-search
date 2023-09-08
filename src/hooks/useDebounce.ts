@@ -5,7 +5,8 @@ import { DataType } from "../constants/@type/data";
 
 const useDebounce = (value: string, delay: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
-  const [data, setData] = useState<DataType[]>([]);
+  const [dataList, setDataList] = useState<DataType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -19,20 +20,22 @@ const useDebounce = (value: string, delay: number) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let tempData = localCache.get(debounceValue);
+      setIsLoading(true);
+      let tempDataList = localCache.get(debounceValue);
 
-      if (!tempData && debounceValue) {
-        tempData = await Axios.search(debounceValue);
-        localCache.set(debounceValue, tempData);
+      if (!tempDataList && debounceValue) {
+        tempDataList = await Axios.search(debounceValue);
+        localCache.set(debounceValue, tempDataList);
       }
 
-      setData(tempData);
+      setIsLoading(false);
+      setDataList(tempDataList);
     };
 
     fetchData();
   }, [debounceValue]);
 
-  return data;
+  return { dataList, isLoading };
 };
 
 export default useDebounce;

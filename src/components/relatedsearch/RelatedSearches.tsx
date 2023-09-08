@@ -2,30 +2,37 @@ import { styled } from "styled-components";
 import { colors } from "../../constants/colors";
 import SearchItem from "./SearchItem";
 import { MAX_TERMS_NUM, ZERO } from "../../constants/number";
+import { DataType } from "../../constants/@type/data";
 
 interface RelatedSearchProps {
   query: string;
   focusIdx: number;
-  terms: {
-    sickCd: string;
-    sickNm: string;
-  }[];
+  dataList: DataType[];
+  isLoading: boolean;
 }
 
-const RelatedSearches = ({ query, focusIdx, terms }: RelatedSearchProps) => {
+const RelatedSearches = ({
+  query,
+  focusIdx,
+  dataList,
+  isLoading,
+}: RelatedSearchProps) => {
   return (
     <RelatedSearchWrap>
       {query && <SearchItem string={query} isFocusing={false} />}
-      {!terms || terms.length === ZERO ? (
+
+      {!dataList || dataList.length === ZERO ? (
         <p>추천 검색어 없음</p>
+      ) : isLoading ? (
+        <p>로딩 중...</p>
       ) : (
         <>
           <p>추천 검색어</p>
-          {terms.map(
-            (term, idx) =>
+          {dataList.map(
+            (data, idx) =>
               idx < MAX_TERMS_NUM && (
                 <SearchItem
-                  string={term.sickNm}
+                  string={data.sickNm}
                   key={idx}
                   isFocusing={focusIdx === idx}
                 />
