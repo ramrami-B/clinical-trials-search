@@ -75,7 +75,6 @@ src/
 │   └── logo.svg
 ├── components/
 │   ├── relatedsearch/
-│   │   ├── RecentSearches.tsx
 │   │   ├── RelatedSearches.tsx
 │   │   └── SearchItem.tsx
 │   ├── Input.tsx

@@ -13,7 +13,6 @@ interface RelatedSearchProps {
 }
 
 const RelatedSearches = ({ query, focusIdx, terms }: RelatedSearchProps) => {
-  // TODO: localstorage에서 캐싱되어 있는 검색어들 불러오기
   return (
     <RelatedSearchWrap>
       {query && <SearchItem string={query} isFocusing={false} />}
