@@ -1,9 +1,6 @@
 import { styled } from "styled-components";
 import { colors } from "../constants/colors";
 import Header from "./Header";
-import Image1 from "../assets/image1.svg";
-import Image2 from "../assets/image2.svg";
-import Image3 from "../assets/image3.svg";
 
 const PageLayout = ({ children }: any) => {
   return (

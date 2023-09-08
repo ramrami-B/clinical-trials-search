@@ -4,7 +4,7 @@ import { Axios } from "../api/AxiosClient";
 import { DataType } from "../constants/@type/data";
 
 const useDebounce = (value: string, delay: number) => {
-  const [debounceValue, setDebounceValue] = useState(value);
+  const [debounceValue, setDebounceValue] = useState<string>(value);
   const [dataList, setDataList] = useState<DataType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

@@ -11,12 +11,12 @@ interface RelatedSearchProps {
   isLoading: boolean;
 }
 
-const RelatedSearches = ({
+const RelatedSearches: React.FC<RelatedSearchProps> = ({
   query,
   focusIdx,
   dataList,
   isLoading,
-}: RelatedSearchProps) => {
+}) => {
   return (
     <RelatedSearchWrap>
       {query && <SearchItem string={query} isFocusing={false} />}

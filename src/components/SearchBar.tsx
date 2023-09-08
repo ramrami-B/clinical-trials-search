@@ -1,16 +1,17 @@
-import RelatedSearches from "./relatedsearch/RelatedSearches";
-import Input from "./Input";
-import useFocus from "../hooks/useFocus";
 import { useState } from "react";
+import useFocus from "../hooks/useFocus";
 import useDebounce from "../hooks/useDebounce";
 import processKeyboard from "../utils/processKeyboard";
+import RelatedSearches from "./relatedsearch/RelatedSearches";
+import Input from "./Input";
+import { DEBOUNCE_TIME } from "../constants/number";
 
 const SearchBar = () => {
   const [isFocus, handlerFocus] = useFocus();
-  const [focusIdx, setFocusIdx] = useState(-1);
-  const [query, setQuery] = useState("");
+  const [focusIdx, setFocusIdx] = useState<number>(-1);
+  const [query, setQuery] = useState<string>("");
 
-  const { dataList, isLoading } = useDebounce(query, 500);
+  const { dataList, isLoading } = useDebounce(query, DEBOUNCE_TIME);
 
   const handlerChange = (target: string) => {
     setQuery(target);

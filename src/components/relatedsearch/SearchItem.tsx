@@ -7,7 +7,7 @@ interface SearchItemProps {
   isFocusing: boolean;
 }
 
-const SearchItem = ({ string, isFocusing }: SearchItemProps) => {
+const SearchItem: React.FC<SearchItemProps> = ({ string, isFocusing }) => {
   return (
     <SearchItemBox
       style={{
