@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
-import { colors } from "../constants/colors";
 import { AiOutlineSearch } from "react-icons/ai";
+import { colors } from "../../constants/colors";
 
 interface SearchItemProps {
   string: string;
   isFocusing: boolean;
 }
 
-const SearchItem = ({ string, isFocusing }: SearchItemProps) => {
+const SearchItem: React.FC<SearchItemProps> = ({ string, isFocusing }) => {
   return (
     <SearchItemBox
       style={{

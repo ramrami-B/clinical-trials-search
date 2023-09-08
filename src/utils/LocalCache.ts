@@ -1,10 +1,12 @@
-class localCaching {
+import { EXPIRE_TIME } from "../constants/number";
+
+class LocalCache {
   #expireTime;
   #now;
 
   constructor() {
     this.#now = new Date().getTime();
-    this.#expireTime = 5 * 60 * 1000;
+    this.#expireTime = EXPIRE_TIME;
   }
 
   get(key: string) {
@@ -29,4 +31,4 @@ class localCaching {
   }
 }
 
-export const localCache = new localCaching();
+export const localCache = new LocalCache();

@@ -1,36 +1,43 @@
 import { styled } from "styled-components";
-import { colors } from "../constants/colors";
+import { colors } from "../../constants/colors";
 import SearchItem from "./SearchItem";
-import { MAX_TERMS_NUM, ZERO } from "../constants/number";
+import { MAX_TERMS_NUM, ZERO } from "../../constants/number";
+import { DataType } from "../../constants/@type/data";
 
 interface RelatedSearchProps {
   query: string;
   focusIdx: number;
-  terms: {
-    sickCd: string;
-    sickNm: string;
-  }[];
+  dataList: DataType[];
+  isLoading: boolean;
 }
 
-const RelatedSearches = ({ query, focusIdx, terms }: RelatedSearchProps) => {
-  // TODO: localstorage에서 캐싱되어 있는 검색어들 불러오기
+const RelatedSearches: React.FC<RelatedSearchProps> = ({
+  query,
+  focusIdx,
+  dataList,
+  isLoading,
+}) => {
   return (
     <RelatedSearchWrap>
       {query && <SearchItem string={query} isFocusing={false} />}
-      {!terms || terms.length === ZERO ? (
+
+      {!dataList || dataList.length === ZERO ? (
         <p>추천 검색어 없음</p>
+      ) : isLoading ? (
+        <p>로딩 중...</p>
       ) : (
         <>
           <p>추천 검색어</p>
-          {terms.map((term, idx) => {
-            return (
-              <SearchItem
-                string={term.sickNm}
-                key={idx}
-                isFocusing={focusIdx === idx}
-              />
-            );
-          })}
+          {dataList.map(
+            (data, idx) =>
+              idx < MAX_TERMS_NUM && (
+                <SearchItem
+                  string={data.sickNm}
+                  key={idx}
+                  isFocusing={focusIdx === idx}
+                />
+              )
+          )}
         </>
       )}
     </RelatedSearchWrap>

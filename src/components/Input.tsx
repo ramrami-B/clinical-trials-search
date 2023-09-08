@@ -9,12 +9,12 @@ interface InputProps {
   value: string;
 }
 
-const Input = ({
+const Input: React.FC<InputProps> = ({
   handlerFocus,
   handlerChange,
   handlerPressKey,
   value,
-}: InputProps) => {
+}) => {
   return (
     <InputWrap>
       <StyledInput
