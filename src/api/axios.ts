@@ -1,5 +1,4 @@
 import axios from "axios";
-import { API_BASE_URL } from "../constants/url";
 
 class AxiosClient {
   #baseURL;
@@ -11,7 +10,7 @@ class AxiosClient {
   async search(query: string) {
     try {
       const res = await axios.get(this.#baseURL + `?q=${query}`);
-      console.info("api");
+      console.info("api 호출");
       return res.data;
     } catch (e) {
       console.log(e);
@@ -19,4 +18,4 @@ class AxiosClient {
   }
 }
 
-export const Axios = new AxiosClient(API_BASE_URL);
+export const Axios = new AxiosClient(process.env.APP_API_URL);
