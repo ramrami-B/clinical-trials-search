@@ -1,7 +1,5 @@
 import axios from "axios";
-import env from "../config/env";
-
-const BASE_URL = env.BASE_URL;
+import { APP_BASE_URL } from "../constants/url";
 
 class AxiosClient {
   #baseURL;
@@ -21,4 +19,4 @@ class AxiosClient {
   }
 }
 
-export const Axios = new AxiosClient(BASE_URL);
+export const Axios = new AxiosClient(APP_BASE_URL);
