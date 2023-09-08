@@ -1,4 +1,4 @@
-import RelatedSearches from "./RelatedSearches";
+import RelatedSearches from "./relatedsearch/RelatedSearches";
 import Input from "./Input";
 import useFocus from "../hooks/useFocus";
 import { useState } from "react";

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { localCache } from "../utils/localCaching";
-import { Axios } from "../api/axios";
-import { TermsType } from "../constants/@type/termsType";
+import { localCache } from "../utils/LocalCache";
+import { Axios } from "../api/AxiosClient";
+import { DataType } from "../constants/@type/data";
 
 const useDebounce = (value: string, delay: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
-  const [data, setData] = useState<TermsType[]>([]);
+  const [data, setData] = useState<DataType[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {

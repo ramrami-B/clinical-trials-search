@@ -67,18 +67,18 @@ pubilc/
 └── index.html
 src/
 ├── api/
-│   └── axios.ts
+│   └── AxiosClient.ts
 ├── assets/
 │   ├── image1.svg
 │   ├── image2.svg
 │   ├── image3.svg
 │   └── logo.svg
 ├── components/
-│   ├── Input.tsx
-│   ├── relatedsearches/
+│   ├── relatedsearch/
 │   │   ├── RecentSearches.tsx
 │   │   ├── RelatedSearches.tsx
 │   │   └── SearchItem.tsx
+│   ├── Input.tsx
 │   └── SearchBar.tsx
 ├── constants/
 │   ├── @type/
@@ -95,7 +95,7 @@ src/
 ├── pages/
 │   └── SearchPage.tsx
 └── utils/
-    ├── localCaching.ts
+    ├── LocalCache.ts
     └── processKeyboard.ts
 package-lock.json
 package.json
@@ -106,6 +106,3 @@ README.md
 .eslintrc.cjs
 .gitignore
 ```
-
-## 📖 References
-https://learn.microsoft.com/ko-kr/windows/win32/fileio/local-caching

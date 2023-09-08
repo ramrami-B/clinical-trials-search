@@ -1,4 +1,4 @@
-class localCaching {
+class LocalCache {
   #expireTime;
   #now;
 
@@ -29,4 +29,4 @@ class localCaching {
   }
 }
 
-export const localCache = new localCaching();
+export const localCache = new LocalCache();

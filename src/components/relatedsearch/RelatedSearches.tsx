@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import { colors } from "../constants/colors";
+import { colors } from "../../constants/colors";
 import SearchItem from "./SearchItem";
-import { MAX_TERMS_NUM, ZERO } from "../constants/number";
+import { ZERO } from "../../constants/number";
 
 interface RelatedSearchProps {
   query: string;
